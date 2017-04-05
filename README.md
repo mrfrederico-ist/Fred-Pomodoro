@@ -1,2 +1,2 @@
-# Fred-Pomodoro
+# Pomodoro
 Another Pomodoro App
