@@ -1,2 +1,2 @@
 # Pomodoro
-Another Pomodoro App
+Another Pomodoro Project
