@@ -17,6 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^pomodoro', include('pomodoro.urls')),
+    url(r'^', include('pomodoro.urls')),
     url(r'^admin/', admin.site.urls),
 ]
