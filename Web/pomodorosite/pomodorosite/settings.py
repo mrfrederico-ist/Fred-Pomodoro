@@ -25,20 +25,14 @@ SECRET_KEY = 'fdnii+bufgnmd#z4i43k!1&m4kla47i16e_vpf&#j@xbio0f1%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-# WARNING: delete show_toolbar and DEBUG_TOOLBAR_CONFIG in production!
-def show_toolbar(request):
-    return True
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
-}
-
 ALLOWED_HOSTS = [
     '0.0.0.0',
-    '127.0.0.1',
     '192.168.1.50',
 ]
 
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 # Application definition
 
