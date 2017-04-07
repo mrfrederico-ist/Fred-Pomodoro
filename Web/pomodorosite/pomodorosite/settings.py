@@ -25,8 +25,17 @@ SECRET_KEY = 'fdnii+bufgnmd#z4i43k!1&m4kla47i16e_vpf&#j@xbio0f1%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+# WARNING: delete show_toolbar and DEBUG_TOOLBAR_CONFIG in production!
+def show_toolbar(request):
+    return True
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
+}
+
 ALLOWED_HOSTS = [
     '0.0.0.0',
+    '127.0.0.1',
     '192.168.1.50',
 ]
 
@@ -42,10 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
-    'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'pomodorosite.urls'
