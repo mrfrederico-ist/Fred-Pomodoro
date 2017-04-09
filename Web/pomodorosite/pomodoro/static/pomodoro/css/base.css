@@ -1,0 +1,40 @@
+/*
+    POMODORO styles
+*/
+
+@import url(fonts.css);
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: #333;
+    background: #fff;
+}
+
+/* LINKS */
+
+a {
+    font-size: large;
+}
+
+/* PAGE STRUCTURE */
+
+#container {
+    position: relative;
+    width: 1140px;
+    max-width: 100%;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-tabs.centered > li {
+    float:none;
+    display:inline-block;
+}
+
+.nav-tabs.centered {
+    text-align:center;
+}

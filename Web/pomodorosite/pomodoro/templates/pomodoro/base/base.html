@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock title %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'pomodoro/css/base.css' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+    <body>
+        <!-- Container -->
+        <div id="container">
+            <!-- Header -->
+            <header id="header">
+                <nav role="navigation">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li role="presentation" class="{% block tab_class_tasks %}{% endblock %}"><a href="{% url 'tasks' %}">Tasks</a></li>
+                        <li role="presentation" class="{% block tab_class_pomodoro %}{% endblock %}"><a href="{% url 'index' %}">Pomodoro</a></li>
+                        <li role="presentation" class="{% block tab_class_settings %}{% endblock %}"><a href="{% url 'settings' %}">Settings</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <!-- END Header -->
+
+            <!-- Content -->
+            <div id="content">
+                {% block content %}{% endblock content %}
+            </div>
+            <!-- END Content -->
+        </div>
+        <!-- END Container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
