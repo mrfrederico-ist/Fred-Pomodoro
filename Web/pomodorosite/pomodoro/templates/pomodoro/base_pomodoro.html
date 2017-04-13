@@ -1,11 +1,9 @@
-{% extends "pomodoro/base/base.html" %}
+{% extends "pomodoro/base.html" %}
 {% load static %}
 
 {% block title %}Pomodoro{% endblock %}
-{% block tab_class_pomodoro %}active{% endblock %}
 
 {% block extrahead %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timer.jquery/0.6.5/timer.jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'pomodoro/js/countdown_timer.js' %}"></script>
 {% endblock %}
-

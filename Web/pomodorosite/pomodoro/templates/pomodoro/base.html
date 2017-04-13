@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'pomodoro/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'pomodoro/css/base.css' %}">
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body>
+    <div>
+        <ul class="nav nav-tabs" id="tab-main">
+            <li><a href="#tab-tasks" role="tab" data-toggle="tab">Tasks </a></li>
+            <li class="active"><a href="#tab-pomodoro" role="tab" data-toggle="tab">Pomodoro </a></li>
+            <li><a href="#tab-settings" role="tab" data-toggle="tab">Settings </a></li>
+        </ul>
+        {% block tab-content %}{% endblock %}
+    </div>
+    <script src="{% static 'pomodoro/js/jquery.min.js' %}"></script>
+    <script src="{% static 'pomodoro/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

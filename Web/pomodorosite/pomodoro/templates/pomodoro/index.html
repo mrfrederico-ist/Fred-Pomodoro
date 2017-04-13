@@ -1,5 +1,175 @@
-{% extends "pomodoro/base/base_pomodoro.html" %}
+{% extends "pomodoro/base_pomodoro.html" %}
 
-{% block content %}
-    <div id="countdown-container"></div>
-{% endblock content %}
+{% block tab-content %}
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="tab-tasks">
+            <div class="modal fade" role="dialog" tabindex="-1" id="model-task-options">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row bottom-gap">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <h5 class="text-left no-margin">Completed Intervals</h5></div>
+                                <div class="col-md-6 col-sm-6 col-xs-6 right">
+                                    <input type="number" name="pomodoro-intervals" value="1" min="0"
+                                           class="input-number" title="pomodoro-intervals">
+                                    <a href="#"> <i class="material-icons">add</i></a>
+                                </div>
+                            </div>
+                            <div class="row info">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <h6>Start </h6></div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <h6 class="text-right">Duration </h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6"><span>dd/MM/yyyy HH:mm</span></div>
+                                <div class="col-md-6 col-sm-6 col-xs-6 right"><span>25 min</span><a href="#"><i
+                                        class="material-icons">delete</i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-todo" role="tab" data-toggle="tab">Todo </a></li>
+                    <li><a href="#tab-done" role="tab" data-toggle="tab">Done </a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="tab-todo">
+                        <div class="row center">
+                            <div class="col-md-12"><a class="btn btn-link" role="button" href="#"><i
+                                    class="material-icons action-button">add_box</i> </a></div>
+                        </div>
+                        <div class="row center">
+                            <div class="col-md-6 col-sm-6 col-xs-6"><span class="task-name-1">Task Name</span></div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="group"><span class="badge">42</span><a data-toggle="modal"
+                                                                                   data-target="#model-task-options"><i
+                                        class="material-icons ic-task-edit-1" data-toggle="modal"
+                                        data-target="model-task-options">edit</i></a><a href="#"><i
+                                        class="material-icons ic-task-done-1">done</i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-done">
+                        <div class="row center">
+                            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 info">
+                                <h6>dd/MM/yyyy </h6></div>
+                        </div>
+                        <div class="row center">
+                            <div class="col-md-6 col-sm-6 col-xs-6"><span>Task Name</span></div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="group"><span class="badge">42</span><a data-toggle="modal"
+                                                                                   data-target="#model-task-options"><i
+                                        class="material-icons ic-task-edit-1" data-toggle="modal"
+                                        data-target="model-task-options">edit</i></a><a href="#"><i
+                                        class="material-icons ic-task-done-1">undo</i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane active" role="tabpanel" id="tab-pomodoro">
+            <div class="row center">
+                <div class="col-md-12">
+                    <div class="dropdown inline">
+                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                type="button">Tasks<span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation"><a href="#">First Item</a></li>
+                            <li role="presentation"><a href="#">Second Item</a></li>
+                            <li role="presentation"><a href="#">Third Item</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col-md-12 col-sm-12">
+                    <div id="timer-container" class="inline">
+                        <button class="btn btn-default btn-sm" type="button">- 1 min</button>
+                        <span id="timer"> 25:00 </span>
+                        <button class="btn btn-default btn-sm" type="button">+ 1 min</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col-md-12">
+                    <div class="btn-group group" role="group">
+                        <button class="btn btn-success" type="button">Start</button>
+                        <button class="btn btn-default" type="button">Next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row center top-gap">
+                <div class="col-md-12">
+                    <div id="pomodoro-complete"><span>0/14 </span></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" role="tabpanel" id="tab-settings">
+            <div class="panel panel-default center">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <h6 class="text-left no-margin">Pomodoro Interval</h6></div>
+                        <div class="col-md-2 col-sm-2 col-xs-2 right">
+                            <input type="number" value="25" min="1" class="input-number" title="Pomodoro Interval">
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 right"><span>minutes </span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default center">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <h6 class="text-left no-margin">Short Break</h6></div>
+                        <div class="col-md-2 col-sm-2 col-xs-2 right">
+                            <input type="number" value="5" min="1" class="input-number" title="Short Break">
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 right"><span>minutes </span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default center">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <h6 class="text-left no-margin">Long Break</h6></div>
+                        <div class="col-md-2 col-sm-2 col-xs-2 right">
+                            <input type="number" value="30" min="1" class="input-number" title="Long Break">
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 right"><span>minutes </span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default center">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <h6 class="text-left no-margin">Long Break After</h6></div>
+                        <div class="col-md-2 col-sm-2 col-xs-2 right">
+                            <input type="number" value="4" min="1" class="input-number" title="Long Break After">
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 right"><span>intervals </span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default center">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <h6 class="text-left no-margin">Daily Target</h6></div>
+                        <div class="col-md-2 col-sm-2 col-xs-2 right">
+                            <input type="number" value="14" min="1" class="input-number" title="Daily Target">
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 right"><span>pomodoros </span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

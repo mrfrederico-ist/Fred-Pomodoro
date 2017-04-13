@@ -5,36 +5,121 @@
 @import url(fonts.css);
 
 body {
-    margin: 0;
-    padding: 0;
+    padding: 16px;
     font-size: 14px;
     font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
-    color: #333;
-    background: #fff;
 }
 
 /* LINKS */
 
 a {
-    font-size: large;
+  color:initial;
+}
+
+/* GLOBAL DEFAULTS */
+
+.material-icons {
+  vertical-align:middle;
+}
+
+/* MODIFIERS */
+
+.right {
+  text-align:right;
+}
+
+.left {
+  text-align:left;
+}
+
+.no-margin {
+  margin:0;
+}
+
+.top-gap {
+  padding-top:8px;
+}
+
+.bottom-gap {
+  padding-bottom:8px;
+}
+
+.center {
+  text-align:center;
+  width:60%;
+  margin:0 auto;
+}
+
+@media (max-width:767px) {
+  .center {
+    width:initial;
+  }
+}
+
+.inline {
+  display:inline-block;
+}
+
+.group > * {
+  margin-right:8px;
+}
+
+.info {
+  background-color:#bbbbbb;
+}
+
+.info * {
+  color:white;
+}
+
+.action-button {
+  font-size:40px;
+}
+
+.input-number {
+  width:50px;
+  text-align:right;
 }
 
 /* PAGE STRUCTURE */
 
-#container {
-    position: relative;
-    width: 1140px;
-    max-width: 100%;
-    padding: 15px;
-    margin-left: auto;
-    margin-right: auto;
+.nav-tabs > li {
+  float:none;
+  display:inline-block;
 }
 
-.nav-tabs.centered > li {
-    float:none;
-    display:inline-block;
+.nav-tabs {
+  text-align:center;
 }
 
-.nav-tabs.centered {
-    text-align:center;
+#tab-main > li > a {
+  font-size:larger;
+}
+
+.tab-content {
+  margin:16px;
+}
+
+.btn .caret {
+  margin-left:8px;
+}
+
+#timer-container {
+  font-size:90px;
+}
+
+@media (max-width:767px) {
+  #timer-container {
+    font-size:45px;
+  }
+}
+
+.panel.center {
+  width:40%;
+}
+
+@media (max-width:767px) {
+  .panel.center {
+    width:initial;
+  }
 }
