@@ -22,3 +22,15 @@ class Pomodoro(models.Model):
 
     def __str__(self):
         return 'task:{}'.format(self.task.name)
+
+
+class Setting(models.Model):
+    name = models.CharField(max_length=64, unique=True, null=False, blank=False)
+    pomodoro_duration = models.IntegerField(default=25)
+    short_break = models.IntegerField(default=5)
+    long_break = models.IntegerField(default=30)
+    long_break_after = models.IntegerField(default=4)
+    daily_target = models.IntegerField(default=14)
+
+    def __str__(self):
+        return self.name

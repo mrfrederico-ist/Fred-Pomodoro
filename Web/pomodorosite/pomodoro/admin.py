@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Task, Pomodoro
+from .models import Task, Pomodoro, Setting
 
 
 class PomodoroInline(admin.TabularInline):
@@ -19,4 +19,5 @@ class TaskAdmin(admin.ModelAdmin):
     inlines = [PomodoroInline]
 
 admin.site.register(Task, TaskAdmin)
+admin.site.register(Setting)
 
