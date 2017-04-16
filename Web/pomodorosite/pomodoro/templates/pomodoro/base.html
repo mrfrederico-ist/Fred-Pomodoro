@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'pomodoro/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'pomodoro/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'pomodoro/css/base.css' %}">
     {% block extrahead %}{% endblock %}
 </head>
 
@@ -21,5 +21,12 @@
     </div>
     <script src="{% static 'pomodoro/js/jquery.min.js' %}"></script>
     <script src="{% static 'pomodoro/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'pomodoro/js/ion.sound.min.js' %}"></script>
+    <script src="{% static 'pomodoro/js/timer.jquery.min.js' %}"></script>
+
+    <script>
+        const SOUNDS_FOLDER_URL = "{% static "pomodoro/sounds/" %}"
+    </script>
+    <script src="{% static 'pomodoro/js/script.js' %}"></script>
 </body>
 </html>
