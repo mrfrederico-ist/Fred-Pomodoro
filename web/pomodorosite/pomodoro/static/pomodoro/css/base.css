@@ -58,7 +58,7 @@ hr {
 }
 
 .inline {
-  display:inline-block;
+  display:inline-flex;
 }
 
 .group > * {
@@ -109,9 +109,13 @@ hr {
   font-size:90px;
 }
 
+#row-pomodoro-timer {
+  font-size:90px;
+}
+
 @media (max-width:767px) {
-  #coll-timer {
-    font-size:45px;
+  #row-pomodoro-timer {
+    font-size:50px;
   }
 }
 
@@ -131,7 +135,7 @@ hr {
   padding-top:0;
 }
 
-#form-settings label {
+label {
   margin-top:6px;
   margin-bottom:6px;
 }

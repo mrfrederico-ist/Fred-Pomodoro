@@ -1,3 +1,15 @@
+//Appearance
+$(function() {
+    $(window).resize(function(){
+        if ($(window).width() <= 767){
+            $('.btn-group').addClass('btn-group-vertical');
+        } else {
+            $('.btn-group').removeClass('btn-group-vertical');
+        }
+    });
+});
+
+
 //Tasks
 $(function() {
     $('#btn-add-task').on('click', function() {
