@@ -13,20 +13,15 @@
 <body>
     <div>
         <ul class="nav nav-tabs" id="tab-main">
-            <li><a href="#tab-tasks" role="tab" data-toggle="tab">Tasks </a></li>
-            <li class="active"><a href="#tab-pomodoro" role="tab" data-toggle="tab">Pomodoro </a></li>
-            <li><a href="#tab-settings" role="tab" data-toggle="tab">Settings </a></li>
+            <li class="{% block tab-class-tasks %}{% endblock %}"><a href="{% url 'tasks' %}">Tasks </a></li>
+            <li class="{% block tab-class-pomodoro %}{% endblock %}"><a href="{% url 'index' %}">Pomodoro </a></li>
+            <li class="{% block tab-class-settings %}{% endblock %}"><a href="{% url 'settings' %}">Settings </a></li>
         </ul>
-        {% block tab-content %}{% endblock %}
+        {% block content %}{% endblock %}
     </div>
     <script src="{% static 'pomodoro/js/jquery.min.js' %}"></script>
     <script src="{% static 'pomodoro/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'pomodoro/js/ion.sound.min.js' %}"></script>
-    <script src="{% static 'pomodoro/js/timer.jquery.min.js' %}"></script>
-
-    <script>
-        const SOUNDS_FOLDER_URL = "{% static "pomodoro/sounds/" %}"
-    </script>
-    <script src="{% static 'pomodoro/js/script.js' %}"></script>
+    <script src="{% static 'pomodoro/js/base.js' %}"></script>
+    {% block extrascript %}{% endblock %}
 </body>
 </html>

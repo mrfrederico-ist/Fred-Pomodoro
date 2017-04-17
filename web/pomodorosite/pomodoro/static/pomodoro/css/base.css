@@ -5,8 +5,9 @@
 @import url(fonts.css);
 
 body {
-    padding: 16px;
-    font-size: 14px;
+  padding:16px;
+  font-size:14px;
+  line-height:normal;
 }
 
 /* GLOBAL DEFAULTS */
@@ -41,8 +42,16 @@ hr {
   padding-top:16px;
 }
 
+.large-top-gap {
+  padding-top:32px;
+}
+
 .bottom-gap {
   padding-bottom:16px;
+}
+
+.large-bottom-gap {
+  padding-bottom:32px;
 }
 
 .center {
@@ -110,17 +119,13 @@ hr {
 }
 
 #row-pomodoro-timer {
-  font-size:90px;
+  /*font-size:90px;*/
 }
 
 @media (max-width:767px) {
   #row-pomodoro-timer {
-    font-size:50px;
+    /*font-size:50px;*/
   }
-}
-
-#form-settings .panel {
-  height:50px;
 }
 
 .panel-body {
@@ -136,6 +141,6 @@ hr {
 }
 
 label {
-  margin-top:6px;
-  margin-bottom:6px;
+  margin-top:10px;
+  margin-bottom:10px;
 }

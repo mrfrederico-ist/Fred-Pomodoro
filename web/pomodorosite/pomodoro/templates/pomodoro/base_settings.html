@@ -1,0 +1,10 @@
+{% extends "pomodoro/base.html" %}
+{% load static %}
+
+{% block title %}Settings{% endblock %}
+
+{% block tab-class-settings %}active{% endblock %}
+
+{% block extrascript %}
+    <script src="{% static 'pomodoro/js/settings.js' %}"></script>
+{% endblock %}

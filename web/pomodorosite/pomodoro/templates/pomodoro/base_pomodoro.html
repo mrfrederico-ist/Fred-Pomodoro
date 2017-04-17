@@ -2,3 +2,12 @@
 {% load static %}
 
 {% block title %}Pomodoro{% endblock %}
+
+{% block tab-class-pomodoro %}active{% endblock %}
+
+{% block extrascript %}
+    <script src="{% static 'pomodoro/js/timer.jquery.min.js' %}"></script>
+    <script src="{% static 'pomodoro/js/ion.sound.min.js' %}"></script>
+    <script>const SOUNDS_FOLDER_URL = "{% static "pomodoro/sounds/" %}"</script>
+    <script src="{% static 'pomodoro/js/pomodoro.js' %}"></script>
+{% endblock %}
