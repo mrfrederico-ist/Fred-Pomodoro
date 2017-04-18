@@ -3,7 +3,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework import permissions
 
-from .models import Task, Setting
+from .models import Task, Pomodoro, Setting
 from . import serializers
 
 
@@ -40,6 +40,26 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         return Task.objects.filter(owner=user)
+
+
+# FIXME - Tasks from another users are shown in Django REST framework html form
+class PomodoroList(generics.ListCreateAPIView):
+    serializer_class = serializers.PomodoroSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Pomodoro.objects.filter(task__owner=user)
+
+
+# FIXME - Tasks from another users are shown in Django REST framework html form
+class PomodoroDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = serializers.PomodoroSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Pomodoro.objects.filter(task__owner=user)
 
 
 class SettingList(generics.ListCreateAPIView):

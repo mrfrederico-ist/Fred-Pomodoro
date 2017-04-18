@@ -21,6 +21,12 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = ('id', 'owner', 'name', 'finished_date', 'pomodoros')
 
 
+class PomodoroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pomodoro
+        fields = ('task', 'start_date', 'duration')
+
+
 class SettingSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
