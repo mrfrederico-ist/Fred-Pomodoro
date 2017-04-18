@@ -15,9 +15,13 @@
             <div class="illustration">
                 {% block form-header %}
                     {% if form.errors %}
-                        {% for fields, errors in form.errors.items %}
+                        {% for field, errors in form.errors.items %}
                             {% for error in errors %}
-                                <p class="error-note">{{ error|escape }}</p>
+                                {% if field == '__all__' %}
+                                    <p class="error-note">{{ error|escape }}</p>
+                                {% else %}
+                                    <p class="error-note">{{ field|escape }} : {{ error|escape }}</p>
+                                {% endif %}
                             {% endfor %}
                         {% endfor %}
                     {% endif %}
