@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Task(models.Model):
+    owner = models.ForeignKey('auth.User', related_name='tasks', on_delete=models.CASCADE)
     name = models.CharField(max_length=64, unique=True, null=False, blank=False)
     finished_date = models.DateField(null=True, blank=True)
 
@@ -25,6 +26,7 @@ class Pomodoro(models.Model):
 
 
 class Setting(models.Model):
+    owner = models.ForeignKey('auth.User', related_name='settings', on_delete=models.CASCADE)
     name = models.CharField(max_length=64, unique=True, null=False, blank=False)
     pomodoro_duration = models.IntegerField(default=25)
     short_break = models.IntegerField(default=5)
