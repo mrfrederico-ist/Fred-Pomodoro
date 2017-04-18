@@ -26,9 +26,9 @@ SECRET_KEY = 'fdnii+bufgnmd#z4i43k!1&m4kla47i16e_vpf&#j@xbio0f1%'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '95.93.243.135',
     '0.0.0.0',
     '192.168.1.50',
+    '95.93.243.135',
 ]
 
 INTERNAL_IPS = [
@@ -46,8 +46,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser',
+    ],
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,7 +65,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'pomodorosite.urls'

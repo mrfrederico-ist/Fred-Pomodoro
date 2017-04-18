@@ -6,22 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'pomodoro/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'pomodoro/css/base.css' %}">
     {% block extrahead %}{% endblock %}
 </head>
 
 <body>
     <div>
         <ul class="nav nav-tabs" id="tab-main">
-            <li class="{% block tab-class-tasks %}{% endblock %}"><a href="{% url 'tasks' %}">Tasks </a></li>
-            <li class="{% block tab-class-pomodoro %}{% endblock %}"><a href="{% url 'index' %}">Pomodoro </a></li>
-            <li class="{% block tab-class-settings %}{% endblock %}"><a href="{% url 'settings' %}">Settings </a></li>
+            <li><a href="#tab-tasks" role="tab" data-toggle="tab">Tasks</a></li>
+            <li class="active"><a href="#tab-pomodoro" role="tab" data-toggle="tab">Pomodoro</a></li>
+            <li><a href="#tab-settings" role="tab" data-toggle="tab">Settings</a></li>
         </ul>
         {% block content %}{% endblock %}
     </div>
     <script src="{% static 'pomodoro/js/jquery.min.js' %}"></script>
     <script src="{% static 'pomodoro/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'pomodoro/js/base.js' %}"></script>
     {% block extrascript %}{% endblock %}
 </body>
 </html>

@@ -16,7 +16,7 @@ class Task(models.Model):
 
 
 class Pomodoro(models.Model):
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, related_name='pomodoros', on_delete=models.CASCADE)
     start_date = models.DateTimeField()
     duration = models.IntegerField()
 
