@@ -10,14 +10,8 @@
 </head>
 
 <body>
-    <div>
-        <ul class="nav nav-tabs" id="tab-main">
-            <li><a href="#tab-tasks" role="tab" data-toggle="tab">Tasks</a></li>
-            <li class="active"><a href="#tab-pomodoro" role="tab" data-toggle="tab">Pomodoro</a></li>
-            <li><a href="#tab-settings" role="tab" data-toggle="tab">Settings</a></li>
-        </ul>
-        {% block content %}{% endblock %}
-    </div>
+    {% block site-content %}{% endblock %}
+
     <script src="{% static 'pomodoro/js/jquery.min.js' %}"></script>
     <script src="{% static 'pomodoro/js/bootstrap.min.js' %}"></script>
     {% block extrascript %}{% endblock %}

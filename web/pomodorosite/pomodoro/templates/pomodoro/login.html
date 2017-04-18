@@ -1,0 +1,23 @@
+{% extends "pomodoro/base_login.html" %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block form-action %}{% url 'login' %}{% endblock %}
+
+{% block form-header %}{{ block.super }}
+    <i class="material-icons">timelapse</i>
+{% endblock %}
+
+{% block form-body %}
+    <div class="form-group">
+        <input class="form-control" type="text" required name="username" placeholder="Username">
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="password" required name="password" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit">Log In</button>
+    </div>
+    <a href="{% url 'create_account' %}" class="forgot">Don't have a account? Create here</a>
+{% endblock %}

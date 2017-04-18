@@ -1,0 +1,29 @@
+{% extends "pomodoro/base.html" %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'pomodoro/css/login.css' %}">
+{% endblock %}
+
+{% block site-content %}
+
+    <div class="login-clean">
+        <form method="post" action="{% block form-action %}{% endblock %}">
+            {% csrf_token %}
+            <div class="illustration">
+                {% block form-header %}
+                    {% if form.errors %}
+                        {% for fields, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <p class="error-note">{{ error|escape }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                {% endblock %}
+            </div>
+            {% block form-body %}{% endblock %}
+        </form>
+    </div>
+{% endblock %}

@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="{% static 'pomodoro/css/pomodoro.css' %}">
 {% endblock %}
 
+{% block site-content %}
+    <div>
+        <ul class="nav nav-tabs" id="tab-main">
+            <li><a href="#tab-tasks" role="tab" data-toggle="tab">Tasks</a></li>
+            <li class="active"><a href="#tab-pomodoro" role="tab" data-toggle="tab">Pomodoro</a></li>
+            <li><a href="#tab-settings" role="tab" data-toggle="tab">Settings</a></li>
+        </ul>
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
+
 {% block extrascript %}
     <script src="{% static 'pomodoro/js/timer.jquery.min.js' %}"></script>
     <script src="{% static 'pomodoro/js/ion.sound.min.js' %}"></script>
