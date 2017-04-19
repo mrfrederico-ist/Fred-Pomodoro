@@ -69,6 +69,10 @@ hr {
   margin-right:8px;
 }
 
+.group-action-btns > * {
+  margin-right:16px;
+}
+
 .info {
   background-color:#bbbbbb;
 }
@@ -156,4 +160,15 @@ hr {
 label {
   margin-top:12px;
   margin-bottom:12px;
+}
+
+@media (max-width:767px) {
+  #coll-modal-task-btns {
+    text-align:right;
+  }
+}
+
+.badge {
+  margin-left:7px;
+  margin-right:7px;
 }

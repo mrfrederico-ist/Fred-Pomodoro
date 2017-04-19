@@ -67,8 +67,7 @@
                             <div class="col-md-12"><a class="btn btn-link" role="button" href="#" id="btn-add-task"><i
                                     class="material-icons action-button">add_box</i> </a></div>
                         </div>
-                        <form action="/api/tasks/" method="post" id="form-input-new-task" class="hidden center top-gap bottom-gap">
-                            {% csrf_token %}
+                        <form method="post" id="form-input-new-task" class="hidden center top-gap bottom-gap">
                             <div class="row">
                                 <div class="col-md-6 col-md-push-1 col-sm-6 col-sm-push-1 col-xs-6 no-padding group">
                                     <input class="form-control" type="text" required="" placeholder="Task Name">
@@ -88,13 +87,12 @@
                             <div class="col-md-6 col-sm-6 col-xs-12 task-name"><span
                                     class="task-name-1">Task Name</span></div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="group"><span class="badge">2</span><a class="btn-edit-task"
-                                                                                  data-toggle="modal"
-                                                                                  data-target="#model-task-options"><i
+                                <div class="group-action-btns"><span><span class="badge">2</span></span><a
+                                        class="btn-edit-task" data-toggle="modal" data-target="#model-task-options"><i
                                         class="material-icons" data-toggle="modal"
-                                        data-target="model-task-options">edit</i></a>
-                                    <a href="#" class="btn-done-task"><i class="material-icons">done</i></a>
-                                </div>
+                                        data-target="model-task-options">edit</i></a><a href="#"
+                                                                                        class="btn-done-task"><i
+                                        class="material-icons">done</i></a></div>
                             </div>
                         </div>
                     </div>
@@ -107,11 +105,12 @@
                              data-pomodoros="1&amp;14/04/2017 10:20&amp;25 min&amp;&amp;2&amp;15/04/2017 12:20&amp;25 min">
                             <div class="col-md-6 col-sm-6 col-xs-12 task-name"><span>Task Name</span></div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="group"><span class="badge">2</span><a data-toggle="modal"
-                                                                                  data-target="#model-task-options"><i
+                                <div class="group-action-btns"><span><span class="badge">2</span></span><a
+                                        data-toggle="modal" data-target="#model-task-options"><i
                                         class="material-icons btn-edit-task" data-toggle="modal"
-                                        data-target="model-task-options">edit</i></a><a href="#"><i
-                                        class="material-icons ic-task-done-1">undo</i></a></div>
+                                        data-target="model-task-options">edit</i></a>
+                                    <a href="#"><i class="material-icons ic-task-done-1">undo</i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -157,8 +156,9 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="tab-settings">
             <div class="row center bottom-gap" id="row-settings-action-btns">
-                <div class="col-md-12 group"><a href="#" id="btn-add-setting"><i class="material-icons">add</i></a><a
-                        href="#" id="btn-edit-setting"><i class="material-icons">edit</i></a></div>
+                <div class="col-md-12 group-action-btns"><a href="#" id="btn-add-setting"><i
+                        class="material-icons">add</i></a><a href="#" id="btn-edit-setting"><i class="material-icons">edit</i></a>
+                </div>
             </div>
             <div class="row center bottom-gap" id="row-settings-dropdown">
                 <div class="col-md-12">
@@ -265,9 +265,7 @@
                 </div>
             </form>
             <div class="row center">
-                <div class="col-md-12">
-                    <a class="text-primary" href="{% url 'logout' %}">Logout</a>
-                </div>
+                <div class="col-md-12"><a class="text-primary" href="#">Logout</a></div>
             </div>
         </div>
     </div>
