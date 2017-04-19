@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="tab-tasks">
+        <div class="tab-pane" role="tabpanel" id="tab-content-tasks">
             <div class="modal fade" role="dialog" tabindex="-1" id="model-task-options">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -13,7 +13,7 @@
                                 <div class="col-md-11">
                                     <h4 id="modal-task-name" class="no-margin">Task Name</h4></div>
                                 <div class="col-md-12 group">
-                                    <form class="form-inline group" method="post">
+                                    <form class="form-inline group" method="POST">
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12 inline group">
                                                 <label for="modal-input-task-pomodoros">Completed Intervals </label>
@@ -22,7 +22,7 @@
                                                        id="modal-input-task-pomodoros">
                                                 <a href="#" id="btn-modal-edit-task"> <i class="material-icons">edit</i></a>
                                             </div>
-                                            <div class="col-md-6 col-md-pull-2 col-sm-6 col-sm-pull-2 col-xs-12"
+                                            <div class="hidden col-md-6 col-md-pull-2 col-sm-6 col-sm-pull-2 col-xs-12"
                                                  id="coll-modal-task-btns">
                                                 <div class="btn-group btn-group-sm group" role="group">
                                                     <button class="btn btn-default btn-sm" type="button"
@@ -67,10 +67,11 @@
                             <div class="col-md-12"><a class="btn btn-link" role="button" href="#" id="btn-add-task"><i
                                     class="material-icons action-button">add_box</i> </a></div>
                         </div>
-                        <form method="post" id="form-input-new-task" class="hidden center top-gap bottom-gap">
+                        <form method="POST" id="form-new-task" class="hidden center top-gap bottom-gap">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6 col-md-push-1 col-sm-6 col-sm-push-1 col-xs-6 no-padding group">
-                                    <input class="form-control" type="text" required="" placeholder="Task Name">
+                                    <input id="input-new-task" name="name" class="form-control" type="text" required="" placeholder="Task Name">
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6 right no-padding">
                                     <div class="btn-group inline group" role="group">
@@ -82,19 +83,7 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="row top-gap center" data-intervals="2"
-                             data-pomodoros="1&amp;14/04/2017 10:20&amp;25 min&amp;&amp;2&amp;15/04/2017 12:20&amp;25 min">
-                            <div class="col-md-6 col-sm-6 col-xs-12 task-name"><span
-                                    class="task-name-1">Task Name</span></div>
-                            <div id="col-tasks-todo-btns" class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="group-action-btns"><span><span class="badge">2</span></span><a
-                                        class="btn-edit-task" data-toggle="modal" data-target="#model-task-options"><i
-                                        class="material-icons" data-toggle="modal"
-                                        data-target="model-task-options">edit</i></a><a href="#"
-                                                                                        class="btn-done-task"><i
-                                        class="material-icons">done</i></a></div>
-                            </div>
-                        </div>
+                        <div id="row-tasks" class="row top-gap center"></div>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="tab-done">
                         <div class="row center bottom-gap">
@@ -117,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane active" role="tabpanel" id="tab-pomodoro">
+        <div class="tab-pane active" role="tabpanel" id="tab-content-pomodoro">
             <div class="row center">
                 <div class="col-md-12">
                     <div class="dropdown inline">
@@ -265,7 +254,9 @@
                 </div>
             </form>
             <div class="row center">
-                <div class="col-md-12"><a class="text-primary" href="#">Logout</a></div>
+                <div class="col-md-12">
+                    <a class="text-primary" href="{% url 'logout' %}">Logout</a>
+                </div>
             </div>
         </div>
     </div>

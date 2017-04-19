@@ -69,7 +69,7 @@ hr {
   margin-right:8px;
 }
 
-.group-action-btns > * {
+.group-action-btns > *:not(:last-child) {
   margin-right:16px;
 }
 

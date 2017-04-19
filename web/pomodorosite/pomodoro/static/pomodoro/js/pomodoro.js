@@ -1,10 +1,81 @@
+const Server = {
+    'tasks_api': 'http://192.168.1.50:8000/api/tasks/'
+};
+
+//Helper functions
+function submit_form($form, url, callback) {
+    var data=$form.serialize();
+    $.ajax({
+        url:url,
+        type:'POST',
+        data:data,
+        success:function() {
+            callback();
+        },
+        error: function (error) {
+            console.log(error.responseText);
+        }
+    });
+}
+
+function del_remote(url, callback) {
+    $.ajax({
+        url:url,
+        type:'DELETE',
+        success:function() {
+            callback();
+        },
+        error: function (error) {
+            console.log(error.responseText);
+        }
+    });
+}
+
+//Init
+$(function(){
+    var csrftoken = Cookies.get('csrftoken');
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+});
+
 //Tasks
 $(function() {
+    $('#tab-tasks').one( "click", function() {
+        init();
+    });
+
+    $('#form-new-task').submit(function (e) {
+        e.preventDefault();
+        submit_form($(this), Server.tasks_api, init);
+    });
+
     $('#btn-add-task').on('click', function() {
         toggle_add_task();
+        $('#input-new-task').val('');
     });
     $('#btn-cancel-input-task').on('click', function() {
         toggle_add_task();
+    });
+
+    $('#row-tasks').delegate('.btn-del-task', 'click', function() {
+        var id = $(this).data('task-id');
+
+        // Because delegate method may be called more then once
+        if( id !== undefined) {
+            var url = Server.tasks_api + $(this).data('task-id');
+
+            del_remote(url, init);
+        }
     });
     // Completed pomodoros in the form:
     // * id&date_time&pomodoro_duration&&id2&date_time2&pomodoro_duration2 ...
@@ -32,6 +103,22 @@ $(function() {
         toggle_modal_edit_task();
     });
 
+    function init() {
+        $('#row-tasks').empty();
+        $('#btn-add-task').removeClass('hidden');
+        $('#form-new-task').addClass('hidden');
+
+        $.ajax({
+            url: Server.tasks_api
+        }).then(function (data) {
+            data.forEach(function (task) {
+                $('#row-tasks').append(
+                    html_tasks_detail(task.id, task.name, task.pomodoros.length)
+                );
+            })
+        });
+    }
+
     function init_modal() {
         $('#modal-tasks-body').empty();
         $('#modal-input-task-pomodoros').prop('disabled', true);
@@ -41,7 +128,7 @@ $(function() {
 
     function toggle_add_task() {
         $('#btn-add-task').toggleClass('hidden');
-        $('#form-input-new-task').toggleClass('hidden');
+        $('#form-new-task').toggleClass('hidden');
     }
 
     function toggle_modal_edit_task() {
@@ -49,18 +136,36 @@ $(function() {
         $('#btn-modal-edit-task').toggleClass('hidden');
     }
 
-    function html_pomodoro_detail(pomo_id, pomo_enddate, pomo_duration) {
+    function html_pomodoro_detail(id, enddate, duration) {
         return '' +
-        '<div id=pomodoro-'+ pomo_id +' class="row top-gap">' +
+        '<div id=pomodoro-'+ id +' class="row top-gap">' +
             '<div class="col-md-6 col-sm-6 col-xs-6">' +
-                '<span>' + pomo_enddate + '</span>' +
+                '<span>' + enddate + '</span>' +
             '</div>' +
             '<div class="col-md-6 col-sm-6 col-xs-6 group right">' +
-                '<span>' + pomo_duration + '</span>' +
+                '<span>' + duration + '</span>' +
             '</div>' +
         '</div>' +
         '<hr/>';
     }
+
+    function html_tasks_detail(id, name, num_pomodoros) {
+        return ''+
+        '<div class="left col-md-6 col-sm-6 col-xs-12">'+
+            '<span class="task-name">' + name +'</span>'+
+        '</div>'+
+        '<div id="col-tasks-todo-btns" class="right col-md-6 col-sm-6 col-xs-12">'+
+            '<div class="group-action-btns">' +
+                '<span><span class="badge">'+ num_pomodoros + '</span></span>'+
+                '<a class="btn-edit-task" href="#" data-task-id="'+id+'" data-toggle="modal" data-target="#model-task-options">'+
+                    '<i class="material-icons">edit</i></a>'+
+                '<a class="btn-done-task" href="#">' +
+                    '<i class="material-icons">done</i></a>'+
+                '<a class="btn-del-task" href="#" data-task-id="'+ id +'"><i class="btn-del-task material-icons">delete</i></a>'+
+            '</div>'+
+        '</div>';
+    }
+
 });
 
 //Pomodoro

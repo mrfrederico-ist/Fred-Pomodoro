@@ -10,8 +10,8 @@
 {% block site-content %}
     <div>
         <ul class="nav nav-tabs" id="tab-main">
-            <li><a href="#tab-tasks" role="tab" data-toggle="tab">Tasks</a></li>
-            <li class="active"><a href="#tab-pomodoro" role="tab" data-toggle="tab">Pomodoro</a></li>
+            <li><a id="tab-tasks" href="#tab-content-tasks" role="tab" data-toggle="tab">Tasks</a></li>
+            <li id="tab-pomodoro" class="active"><a href="#tab-content-pomodoro" role="tab" data-toggle="tab">Pomodoro</a></li>
             <li><a href="#tab-settings" role="tab" data-toggle="tab">Settings</a></li>
         </ul>
         {% block content %}{% endblock %}
