@@ -1,6 +1,8 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from rest_framework.routers import DefaultRouter
+from rest_framework.schemas import get_schema_view
+
 
 from pomodoro import views, views_api
 
@@ -19,4 +21,5 @@ router.register(r'settings', views_api.SettingViewSet)
 
 urlpatterns += [
     url(r'^api/', include(router.urls)),
+    url(r'^api/schema/', get_schema_view(title='Pomodoro')),
 ]
