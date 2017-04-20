@@ -28,11 +28,11 @@ class Pomodoro(models.Model):
 class Setting(models.Model):
     owner = models.ForeignKey('auth.User', related_name='settings', on_delete=models.CASCADE)
     name = models.CharField(max_length=64, unique=True, null=False, blank=False)
-    pomodoro_duration = models.IntegerField(default=25)
-    short_break = models.IntegerField(default=5)
-    long_break = models.IntegerField(default=30)
-    long_break_after = models.IntegerField(default=4)
-    daily_target = models.IntegerField(default=14)
+    pomodoro_duration = models.IntegerField(default=25, null=False, blank=False)
+    short_break = models.IntegerField(default=5, null=False, blank=False)
+    long_break = models.IntegerField(default=30, null=False, blank=False)
+    long_break_after = models.IntegerField(default=4, null=False, blank=False)
+    daily_target = models.IntegerField(default=14, null=False, blank=False)
 
     def __str__(self):
         return self.name

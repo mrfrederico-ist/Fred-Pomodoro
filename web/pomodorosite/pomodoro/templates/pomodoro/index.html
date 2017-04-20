@@ -12,9 +12,9 @@
                             <div class="row bottom-gap">
                                 <div class="col-md-11">
                                     <h4 id="modal-task-name" class="no-margin">Task Name</h4></div>
-                                <div class="col-md-12 group">
-                                    <form class="form-inline group" method="POST">
-                                        <div class="row">
+                                <div class="col-md-12 group no-padding">
+                                    <form method="post" class="group no-margin">
+                                        <div class="row no-margin">
                                             <div class="col-md-6 col-sm-6 col-xs-12 inline group">
                                                 <label for="modal-input-task-pomodoros">Completed Intervals </label>
                                                 <input class="form-control input-number" type="number"
@@ -22,8 +22,8 @@
                                                        id="modal-input-task-pomodoros">
                                                 <a href="#" id="btn-modal-edit-task"> <i class="material-icons">edit</i></a>
                                             </div>
-                                            <div class="hidden col-md-6 col-md-pull-2 col-sm-6 col-sm-pull-2 col-xs-12"
-                                                 id="coll-modal-task-btns">
+                                            <div class="col-md-6 col-md-pull-2 col-sm-6 col-sm-pull-2 col-xs-12"
+                                                 id="col-modal-task-btns">
                                                 <div class="btn-group btn-group-sm group" role="group">
                                                     <button class="btn btn-default btn-sm" type="button"
                                                             id="btn-modal-task-cancel">Cancel
@@ -47,7 +47,7 @@
                         <div class="modal-body" id="modal-tasks-body">
                             <div class="row top-gap">
                                 <div class="col-md-7 col-sm-6 col-xs-6"><span>dd/MM/yyyy HH:mm</span></div>
-                                <div class="col-md-5 col-sm-6 col-xs-6 group right"><span>25 min</span></div>
+                                <div class="col-md-5 col-sm-6 col-xs-6 text-right group"><span>25 min</span></div>
                                 <div class="col-md-12">
                                     <hr>
                                 </div>
@@ -62,18 +62,18 @@
                     <li><a href="#tab-done" role="tab" data-toggle="tab">Done </a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="tab-todo">
-                        <div class="row center">
+                    <div class="tab-pane active center" role="tabpanel" id="tab-todo">
+                        <div class="row bottom-gap center">
                             <div class="col-md-12"><a class="btn btn-link" role="button" href="#" id="btn-add-task"><i
                                     class="material-icons action-button">add_box</i> </a></div>
                         </div>
-                        <form method="POST" id="form-new-task" class="hidden center top-gap bottom-gap">
-                            {% csrf_token %}
+                        <form method="post" id="form-input-new-task" class="hidden center bottom-gap">
                             <div class="row">
-                                <div class="col-md-6 col-md-push-1 col-sm-6 col-sm-push-1 col-xs-6 no-padding group">
-                                    <input id="input-new-task" name="name" class="form-control" type="text" required="" placeholder="Task Name">
+                                <div class="col-sm-8 col-xs-6 no-padding group">
+                                    <input class="form-control" type="text" name="name" required=""
+                                           placeholder="Task Name">
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6 right no-padding">
+                                <div class="col-sm-4 col-xs-6 text-right no-padding">
                                     <div class="btn-group inline group" role="group">
                                         <button class="btn btn-default btn-sm" type="button" id="btn-cancel-input-task">
                                             Cancel
@@ -83,22 +83,66 @@
                                 </div>
                             </div>
                         </form>
-                        <div id="row-tasks" class="row top-gap center"></div>
+                        <div id="tasks-content">
+                        </div>
                     </div>
-                    <div class="tab-pane" role="tabpanel" id="tab-done">
+                    <div class="tab-pane center" role="tabpanel" id="tab-done">
                         <div class="row center bottom-gap">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
                                 <h6>dd/MM/yyyy </h6></div>
                         </div>
-                        <div class="row top-gap center" data-intervals="2"
-                             data-pomodoros="1&amp;14/04/2017 10:20&amp;25 min&amp;&amp;2&amp;15/04/2017 12:20&amp;25 min">
-                            <div class="col-md-6 col-sm-6 col-xs-12 task-name"><span>Task Name</span></div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="group-action-btns"><span><span class="badge">2</span></span><a
-                                        data-toggle="modal" data-target="#model-task-options"><i
-                                        class="material-icons btn-edit-task" data-toggle="modal"
-                                        data-target="model-task-options">edit</i></a>
-                                    <a href="#"><i class="material-icons ic-task-done-1">undo</i></a>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row" data-intervals="2">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 text-left col-task-detail"><span
+                                            class="task-name-1">&lt;Task Name 5&gt;</span></div>
+                                    <div class="col-md-6 col-md-pull-0 col-sm-6 col-xs-12 text-right col-task-detail col-task-detail-btns group-action-btns">
+                                        <span><span class="badge">2</span></span><a href="#" class="btn-done-task"><i
+                                            class="material-icons">done</i></a><a class="btn-edit-task"
+                                                                                  data-toggle="modal"
+                                                                                  data-target="#model-task-options"><i
+                                            class="material-icons" data-toggle="modal" data-target="model-task-options">info</i></a>
+                                        <a
+                                                href="#"><i class="material-icons">delete</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row" data-intervals="2">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 text-left col-task-detail"><span
+                                            class="task-name-1">&lt;Task Name 4&gt;</span></div>
+                                    <div class="col-md-6 col-md-pull-0 col-sm-6 col-xs-12 text-right col-task-detail col-task-detail-btns group-action-btns">
+                                        <span><span class="badge">2</span></span><a href="#" class="btn-done-task"><i
+                                            class="material-icons">done</i></a><a class="btn-edit-task"
+                                                                                  data-toggle="modal"
+                                                                                  data-target="#model-task-options"><i
+                                            class="material-icons" data-toggle="modal" data-target="model-task-options">info</i></a>
+                                        <a
+                                                href="#"><i class="material-icons">delete</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row center bottom-gap">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
+                                <h6>dd/MM/yyyy </h6></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row" data-intervals="2">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 text-left col-task-detail"><span
+                                            class="task-name-1">&lt;Task Name 3&gt;</span></div>
+                                    <div class="col-md-6 col-md-pull-0 col-sm-6 col-xs-12 text-right col-task-detail col-task-detail-btns group-action-btns">
+                                        <span><span class="badge">2</span></span><a href="#" class="btn-done-task"><i
+                                            class="material-icons">done</i></a><a class="btn-edit-task"
+                                                                                  data-toggle="modal"
+                                                                                  data-target="#model-task-options"><i
+                                            class="material-icons" data-toggle="modal" data-target="model-task-options">info</i></a>
+                                        <a
+                                                href="#"><i class="material-icons">delete</i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -106,8 +150,8 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane active" role="tabpanel" id="tab-content-pomodoro">
-            <div class="row center">
+        <div class="tab-pane active center" role="tabpanel" id="tab-content-pomodoro">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="dropdown inline">
                         <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
@@ -120,142 +164,181 @@
                     </div>
                 </div>
             </div>
-            <div class="row center">
-                <div class="col-md-2 col-sm-2 col-xs-12 left coll-time-ctl-btn coll-time-sub-btn">
-                    <button class="btn btn-default btn-sm inline" type="button" id="btn-minus-pomodoro">- 1 min</button>
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-12" id="coll-timer">
-                    <div id="timer-container" class="inline"><span>25:00</span></div>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-12 right coll-time-ctl-btn coll-time-add-btn">
+            <div class="row">
+                <div class="col-md-2 col-sm-2 col-sm-push-10 col-xs-12 text-left col-time-ctl-btn col-time-add-btn">
                     <button class="btn btn-default btn-sm inline" type="button" id="btn-plus-pomodoro">+ 1 min</button>
                 </div>
+                <div class="col-md-8 col-sm-8 col-xs-12" id="col-timer">
+                    <div id="timer-container" class="inline"><span>25:00</span></div>
+                </div>
+                <div class="col-md-2 col-sm-2 col-sm-pull-10 col-xs-12 text-right col-time-ctl-btn col-time-sub-btn">
+                    <button class="btn btn-default btn-sm inline" type="button" id="btn-minus-pomodoro">- 1 min</button>
+                </div>
             </div>
-            <div class="row center">
+            <div class="row">
                 <div class="col-md-12 group">
                     <button class="btn btn-success" type="button" id="btn-start-pomodoro">Start</button>
                     <button class="btn btn-danger hidden" type="button" id="btn-stop-pomodoro">Stop</button>
                     <button class="btn btn-default" type="button" id="btn-next-pomodoro-break">Next</button>
                 </div>
             </div>
-            <div class="row center top-gap">
+            <div class="row top-gap">
                 <div class="col-md-12"><span id="pomodoro-completed">0 </span><span>/ </span><span id="pomodoro-target">14 </span>
                 </div>
             </div>
         </div>
-        <div class="tab-pane" role="tabpanel" id="tab-settings">
-            <div class="row center bottom-gap" id="row-settings-action-btns">
-                <div class="col-md-12 group-action-btns"><a href="#" id="btn-add-setting"><i
-                        class="material-icons">add</i></a><a href="#" id="btn-edit-setting"><i class="material-icons">edit</i></a>
-                </div>
-            </div>
-            <div class="row center bottom-gap" id="row-settings-dropdown">
-                <div class="col-md-12">
-                    <div class="dropdown inline">
-                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
-                                type="button" id="btn-dropdown-settings">Setting Name<span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="#">First Item</a></li>
-                            <li role="presentation"><a href="#">Second Item</a></li>
-                            <li role="presentation"><a href="#">Third Item</a></li>
-                        </ul>
+        <div class="tab-pane" role="tabpanel" id="tab-content-settings">
+            <div>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-setting-pomodoro" role="tab" data-toggle="tab">Timer </a></li>
+                    <li><a href="#tab-setting-profile" role="tab" data-toggle="tab">Profile </a></li>
+                </ul>
+                <div class="tab-content text-left">
+                    <div class="tab-pane active" role="tabpanel" id="tab-setting-pomodoro">
+                        <div class="row center bottom-gap" id="row-settings-action-btns">
+                            <div class="col-md-12 group-action-btns"><a href="#" id="btn-add-setting"><i
+                                    class="material-icons">add</i></a><a href="#" id="btn-edit-setting"><i
+                                    class="material-icons">edit</i></a></div>
+                        </div>
+                        <div class="row center bottom-gap" id="row-settings-dropdown">
+                            <div class="col-md-12">
+                                <div class="dropdown inline">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false" type="button" id="btn-dropdown-settings">Setting
+                                        Name<span class="caret"></span></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li role="presentation"><a href="#">First Item</a></li>
+                                        <li role="presentation"><a href="#">Second Item</a></li>
+                                        <li role="presentation"><a href="#">Third Item</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <form method="post" id="form-settings" class="center top-gap">
+                            <div class="row hidden bottom-gap" id="row-settings-form-actions">
+                                <div class="col-md-6 col-sm-6 col-xs-7 group">
+                                    <input class="form-control" type="text" required="" placeholder="Setting name"
+                                           id="input-setting-name">
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-5 text-right no-padding">
+                                    <div class="btn-group inline group" role="group">
+                                        <button class="btn btn-default btn-sm" type="button"
+                                                id="btn-cancel-input-setting">Cancel
+                                        </button>
+                                        <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label for="setting-duration">Pomodoro duration </label>
+                                </div>
+                                <div class="panel-body no-padding">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-xs-offset-3">
+                                            <input class="form-control input-number" type="number"
+                                                   name="pomodoro_duration" value="25" disabled="" required="" min="1"
+                                                   id="setting-duration">
+                                        </div>
+                                        <div class="col-xs-6 text-left">
+                                            <h6>minutes </h6></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label for="setting-break-duration">Break </label>
+                                </div>
+                                <div class="panel-body no-padding">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-xs-offset-3">
+                                            <input class="form-control input-number" type="number" name="short_break"
+                                                   value="5" disabled="" required="" min="1"
+                                                   id="setting-break-duration">
+                                        </div>
+                                        <div class="col-xs-6 text-left">
+                                            <h6>minutes </h6></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label for="setting-long-break-duration">Long Break </label>
+                                </div>
+                                <div class="panel-body no-padding">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-xs-offset-3">
+                                            <input class="form-control input-number" type="number" name="long_break"
+                                                   value="30" disabled="" required="" min="1"
+                                                   id="setting-long-break-duration">
+                                        </div>
+                                        <div class="col-xs-6 text-left">
+                                            <h6>minutes </h6></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label for="setting-pomodoros-to-long-break">Long Break After </label>
+                                </div>
+                                <div class="panel-body no-padding">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-xs-offset-3">
+                                            <input class="form-control input-number" type="number"
+                                                   name="long_break_after" value="4" disabled="" required="" min="1"
+                                                   id="setting-pomodoros-to-long-break">
+                                        </div>
+                                        <div class="col-xs-6 text-left">
+                                            <h6>pomodoros </h6></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label for="setting-daily-target">Daily Target </label>
+                                </div>
+                                <div class="panel-body no-padding">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-xs-offset-3">
+                                            <input class="form-control input-number" type="number" name="daily_target"
+                                                   value="14" disabled="" required="" min="1" id="setting-daily-target">
+                                        </div>
+                                        <div class="col-xs-6 text-left">
+                                            <h6>pomodoros </h6></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-            </div>
-            <form method="post" id="form-settings" class="center">
-                <div class="row hidden bottom-gap" id="row-settings-form-actions">
-                    <div class="col-md-6 col-sm-6 col-xs-7 group">
-                        <input class="form-control" type="text" required="" placeholder="Setting name"
-                               id="input-setting-name">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-5 no-padding right">
-                        <div class="btn-group inline group" role="group">
-                            <button class="btn btn-default btn-sm" type="button" id="btn-cancel-input-setting">Cancel
-                            </button>
-                            <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                    <div class="tab-pane center top-gap" role="tabpanel" id="tab-setting-profile">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-3"><i class="material-icons">person</i></div>
+                                    <div class="col-md-10 col-sm-10 col-xs-9 text-left no-padding">
+                                        <span>{{ user.username }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if user.email %}
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-2 col-xs-3"><i class="material-icons">email</i></div>
+                                        <div class="col-md-10 col-sm-10 col-xs-9 text-left no-padding">
+                                            <span>{{ user.email }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="row top-gap">
+                            <div class="col-md-12">
+                                <a class="text-primary" href="{% url 'logout' %}">Logout</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">
-                                <label for="setting-duration">Pomodoro duration </label>
-                            </div>
-                            <div class="col-lg-2 col-lg-offset-1 col-lg-pull-0 col-md-2 col-md-offset-1 col-md-pull-0 col-sm-2 col-sm-offset-1 col-sm-pull-0 col-xs-1 col-xs-pull-1 right">
-                                <input class="form-control input-number" type="number" name="duration" value="25"
-                                       disabled="" required="" min="1" id="setting-duration">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 left">
-                                <h6>minutes </h6></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">
-                                <label for="setting-break-duration">Break </label>
-                            </div>
-                            <div class="col-lg-2 col-lg-offset-1 col-lg-pull-0 col-md-2 col-md-offset-1 col-md-pull-0 col-sm-2 col-sm-offset-1 col-sm-pull-0 col-xs-1 col-xs-pull-1 right">
-                                <input class="form-control input-number" type="number" name="break-duration" value="5"
-                                       disabled="" required="" min="1" id="setting-break-duration">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 left">
-                                <h6>minutes </h6></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">
-                                <label for="setting-long-break-duration">Long Break</label>
-                            </div>
-                            <div class="col-lg-2 col-lg-offset-1 col-lg-pull-0 col-md-2 col-md-offset-1 col-md-pull-0 col-sm-2 col-sm-offset-1 col-sm-pull-0 col-xs-1 col-xs-pull-1 right">
-                                <input class="form-control input-number" type="number" name="long-break-duration"
-                                       value="30" disabled="" required="" min="1" id="setting-long-break-duration">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 left">
-                                <h6>minutes </h6></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">
-                                <label for="setting-pomodoros-to-long-break">Long Break After</label>
-                            </div>
-                            <div class="col-lg-2 col-lg-offset-1 col-lg-pull-0 col-md-2 col-md-offset-1 col-md-pull-0 col-sm-2 col-sm-offset-1 col-sm-pull-0 col-xs-1 col-xs-pull-1 right">
-                                <input class="form-control input-number" type="number" name="pomodoros-to-long-break"
-                                       value="4" disabled="" required="" min="1" id="setting-pomodoros-to-long-break">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 left">
-                                <h6>pomodoros </h6></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">
-                                <label for="setting-daily-target">Daily Target</label>
-                            </div>
-                            <div class="col-lg-2 col-lg-offset-1 col-lg-pull-0 col-md-2 col-md-offset-1 col-md-pull-0 col-sm-2 col-sm-offset-1 col-sm-pull-0 col-xs-1 col-xs-pull-1 right">
-                                <input class="form-control input-number" type="number" name="daily-target" value="14"
-                                       disabled="" required="" min="1" id="setting-daily-target">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 left">
-                                <h6>pomodoros </h6></div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="row center">
-                <div class="col-md-12">
-                    <a class="text-primary" href="{% url 'logout' %}">Logout</a>
                 </div>
             </div>
         </div>

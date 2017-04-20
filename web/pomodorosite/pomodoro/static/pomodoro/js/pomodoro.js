@@ -1,5 +1,5 @@
 const Server = {
-    'tasks_api': 'http://192.168.1.50:8000/api/tasks/'
+    'tasks_api': 'http://fredmbp:8000/api/tasks/'
 };
 
 //Helper functions
@@ -54,7 +54,7 @@ $(function() {
         init();
     });
 
-    $('#form-new-task').submit(function (e) {
+    $('#form-input-new-task').submit(function (e) {
         e.preventDefault();
         submit_form($(this), Server.tasks_api, init);
     });
@@ -67,7 +67,7 @@ $(function() {
         toggle_add_task();
     });
 
-    $('#row-tasks').delegate('.btn-del-task', 'click', function() {
+    $('#tasks-content').delegate('.btn-del-task', 'click', function() {
         var id = $(this).data('task-id');
 
         // Because delegate method may be called more then once
@@ -104,15 +104,15 @@ $(function() {
     });
 
     function init() {
-        $('#row-tasks').empty();
+        $('#tasks-content').empty();
         $('#btn-add-task').removeClass('hidden');
-        $('#form-new-task').addClass('hidden');
+        $('#form-input-new-task').addClass('hidden');
 
         $.ajax({
             url: Server.tasks_api
         }).then(function (data) {
             data.forEach(function (task) {
-                $('#row-tasks').append(
+                $('#tasks-content').append(
                     html_tasks_detail(task.id, task.name, task.pomodoros.length)
                 );
             })
@@ -122,17 +122,17 @@ $(function() {
     function init_modal() {
         $('#modal-tasks-body').empty();
         $('#modal-input-task-pomodoros').prop('disabled', true);
-        $('#coll-modal-task-btns').addClass('hidden');
+        $('#col-modal-task-btns').addClass('hidden');
         $('#btn-modal-edit-task').removeClass('hidden');
     }
 
     function toggle_add_task() {
         $('#btn-add-task').toggleClass('hidden');
-        $('#form-new-task').toggleClass('hidden');
+        $('#form-input-new-task').toggleClass('hidden');
     }
 
     function toggle_modal_edit_task() {
-        $('#coll-modal-task-btns').toggleClass('hidden');
+        $('#col-modal-task-btns').toggleClass('hidden');
         $('#btn-modal-edit-task').toggleClass('hidden');
     }
 
@@ -151,18 +151,22 @@ $(function() {
 
     function html_tasks_detail(id, name, num_pomodoros) {
         return ''+
-        '<div class="left col-md-6 col-sm-6 col-xs-12">'+
-            '<span class="task-name">' + name +'</span>'+
-        '</div>'+
-        '<div id="col-tasks-todo-btns" class="right col-md-6 col-sm-6 col-xs-12">'+
-            '<div class="group-action-btns">' +
-                '<span><span class="badge">'+ num_pomodoros + '</span></span>'+
-                '<a class="btn-edit-task" href="#" data-task-id="'+id+'" data-toggle="modal" data-target="#model-task-options">'+
-                    '<i class="material-icons">edit</i></a>'+
-                '<a class="btn-done-task" href="#">' +
-                    '<i class="material-icons">done</i></a>'+
-                '<a class="btn-del-task" href="#" data-task-id="'+ id +'"><i class="btn-del-task material-icons">delete</i></a>'+
-            '</div>'+
+        '<div class="panel panel-default">' +
+            '<div class="panel-body">' +
+                '<div class="row">' +
+                    '<div class="col-md-6 col-sm-6 col-xs-12 text-left col-task-detail">' +
+                        '<span class="task-name">'+name+'</span>' +
+                    '</div>' +
+                    '<div class="col-md-6 col-md-pull-0 col-sm-6 col-xs-12 text-right col-task-detail col-task-detail-btns group-action-btns">' +
+                        '<span class="badge">'+num_pomodoros+'</span>' +
+                            '<a class="btn-done-task" href="#" data-task-id="'+id+'">' +
+                                '<i class="material-icons">done</i></a>' +
+                            '<a class="btn-edit-task" data-task-id="'+id+'" data-toggle="modal" data-target="#model-task-options">' +
+                                '<i class="material-icons" data-toggle="modal" data-target="model-task-options">info</i></a>' +
+                            '<a class="btn-del-task" href="#" data-task-id="'+id+'"><i class="material-icons">delete</i></a> ' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
         '</div>';
     }
 

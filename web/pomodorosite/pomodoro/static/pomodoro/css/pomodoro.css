@@ -5,176 +5,188 @@
 @import url(fonts.css);
 
 body {
-  padding:16px;
-  font-size:14px;
+    padding: 16px;
+    font-size: 14px;
 }
 
 /* GLOBAL DEFAULTS */
 
 a {
-  color:initial;
+    color: initial;
 }
 
 hr {
-  margin:0;
+    margin: 0;
+}
+
+label {
+    margin: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .material-icons {
-  vertical-align:middle;
+    vertical-align: middle;
 }
 
 /* MODIFIERS */
 
-.right {
-  text-align:right;
-}
-
-.left {
-  text-align:left;
-}
-
 .no-margin {
-  margin:0;
+    margin: 0 !important;
 }
 
 .no-padding {
-  padding:0;
+    padding: 0 !important;
 }
 
 .top-gap {
-  padding-top:16px;
+    padding-top: 16px;
 }
 
 .bottom-gap {
-  padding-bottom:16px;
+    padding-bottom: 16px;
 }
 
 .center {
-  text-align:center;
-  width:425px;
-  margin:0 auto;
+    text-align: center;
+    width: 380px;
+    margin: 0 auto;
 }
 
-@media (max-width:767px) {
-  .center {
-    width:initial;
-  }
+@media (max-width: 767px) {
+    .center {
+        width: initial;
+    }
 }
 
 .inline {
-  display:inline-flex;
+    display: inline-flex;
 }
 
 .group > * {
-  margin-right:8px;
+    margin-right: 8px;
 }
 
 .group-action-btns > *:not(:last-child) {
-  margin-right:16px;
+    margin-right: 16px;
 }
 
 .info {
-  background-color:#bbbbbb;
+    background-color: #bbbbbb;
 }
 
 .info * {
-  color:white;
+    color: white;
 }
 
 .action-button {
-  font-size:40px;
+    font-size: 40px;
 }
 
 .input-number {
-  width:50px !important;
-  text-align:center;
+    width: 50px !important;
+    margin-bottom: 8px;
+    text-align: center;
 }
 
 /* PAGE STRUCTURE */
 
 .nav-tabs > li {
-  float:none;
-  display:inline-block;
+    float: none;
+    display: inline-block;
 }
 
 .nav-tabs {
-  text-align:center;
+    text-align: center;
 }
 
 #tab-main > li > a {
-  font-size:larger;
+    font-size: larger;
 }
 
 .tab-content {
-  margin:16px;
+    margin: 16px;
 }
 
 .btn .caret {
-  margin-left:8px;
+    margin-left: 8px;
 }
 
-#coll-timer {
-  font-size:90px;
+/* Tab Pomodoro */
+
+#col-timer {
+    font-size: 90px;
 }
 
-@media (max-width:767px) {
-  #coll-timer {
-    line-height:normal;
-  }
+@media (max-width: 767px) {
+    #col-timer {
+        line-height: normal;
+    }
 }
 
-.coll-time-ctl-btn {
-  padding:69px 0;
+.col-time-ctl-btn {
+    padding: 69px 0;
 }
 
-@media (max-width:767px) {
-  .coll-time-ctl-btn {
-    text-align:center;
-  }
+@media (max-width: 767px) {
+    .col-time-ctl-btn {
+        text-align: center;
+    }
 }
 
-@media (max-width:767px) {
-  .coll-time-add-btn {
-    padding-top:0;
-  }
+@media (max-width: 767px) {
+    .col-time-add-btn {
+        padding-bottom: 0;
+    }
 }
 
-@media (max-width:767px) {
-  .coll-time-sub-btn {
-    padding-bottom:0;
-  }
+@media (max-width: 767px) {
+    .col-time-sub-btn {
+        padding-top: 0;
+    }
 }
 
-.panel-body {
-  padding:7px;
+/* Tab Tasks */
+
+.badge {
+    margin-left: 7px;
+    margin-right: 7px;
 }
 
 #modal-tasks-header {
-  padding-bottom:0;
+    padding-bottom: 0;
 }
 
 #modal-tasks-body {
-  padding-top:0;
+    padding-top: 0;
 }
 
-label {
-  margin-top:12px;
-  margin-bottom:12px;
+@media (max-width: 767px) {
+    #col-modal-task-btns {
+        text-align: center;
+    }
 }
 
-@media (max-width:767px) {
-  #coll-modal-task-btns {
-    text-align:right;
-  }
+@media (max-width: 767px) {
+    .col-task-detail {
+        text-align: center;
+    }
 }
 
-.badge {
-  margin-left:7px;
-  margin-right:7px;
+@media (max-width: 767px) {
+    .col-task-detail-btns {
+        margin-top: 8px;
+    }
 }
 
-@media (max-width:767px) {
-  #col-tasks-todo-btns {
-    margin-top:8px;
-  }
+/* Tab Settings */
+
+@media (min-width: 767px) {
+    #form-settings.center {
+        width: 300px;
+    }
+}
+
+#form-settings .panel label {
+    padding: 0;
 }
