@@ -2,6 +2,8 @@
 
 {% block content %}
     <div class="tab-content">
+        <div id="errors" class="hidden center error-note" tabindex="0">
+        </div>
         <div class="tab-pane" role="tabpanel" id="tab-content-tasks">
             <div class="modal fade" role="dialog" tabindex="-1" id="model-task-options">
                 <div class="modal-dialog" role="document">
@@ -70,7 +72,7 @@
                         <form method="post" id="form-input-new-task" class="hidden center bottom-gap">
                             <div class="row">
                                 <div class="col-sm-8 col-xs-6 no-padding group">
-                                    <input class="form-control" type="text" name="name" required=""
+                                    <input id="input-new-task" class="form-control" type="text" name="name" required=""
                                            placeholder="Task Name">
                                 </div>
                                 <div class="col-sm-4 col-xs-6 text-right no-padding">

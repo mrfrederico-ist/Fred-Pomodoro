@@ -1,0 +1,17 @@
+@import url(fonts.css);
+
+.error-note {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    padding: 10px 12px;
+    color: #e51c23;
+    background: #fff 5px 12px;
+}
+
+.error-note.center {
+    margin-bottom: 16px;
+}
+
+

@@ -3,8 +3,8 @@ const Server = {
 };
 
 //Helper functions
-function submit_form($form, url, callback) {
-    var data=$form.serialize();
+function submit_form(form_id, url, callback) {
+    var data=$('#'+form_id+'').serialize();
     $.ajax({
         url:url,
         type:'POST',
@@ -13,7 +13,7 @@ function submit_form($form, url, callback) {
             callback();
         },
         error: function (error) {
-            console.log(error.responseText);
+            display_remote_errors(error);
         }
     });
 }
@@ -25,9 +25,18 @@ function del_remote(url, callback) {
         success:function() {
             callback();
         },
-        error: function (error) {
-            console.log(error.responseText);
+        error: function (errors) {
+            console.log(JSON.parse(errors));
         }
+    });
+}
+
+function display_remote_errors(error) {
+    $('#errors').toggleClass('hidden').focus();
+    var errors = JSON.parse(error.responseText);
+
+    Object.keys(errors).forEach(function (label) {
+        $('#errors').append('<p class="text-left">'+errors[label]+'</p>');
     });
 }
 
@@ -46,6 +55,11 @@ $(function(){
             }
         }
     });
+
+    // Disable errors container
+    $('#errors').focusout(function () {
+        $('#errors').empty().toggleClass('hidden');
+    });
 });
 
 //Tasks
@@ -56,7 +70,7 @@ $(function() {
 
     $('#form-input-new-task').submit(function (e) {
         e.preventDefault();
-        submit_form($(this), Server.tasks_api, init);
+        submit_form($(this).prop('id'), Server.tasks_api, init);
     });
 
     $('#btn-add-task').on('click', function() {
