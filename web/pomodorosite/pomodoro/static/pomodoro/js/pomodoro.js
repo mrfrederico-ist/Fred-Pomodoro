@@ -1,5 +1,5 @@
 const Server = {
-    'tasks_api': 'http://fredmbp:8000/api/tasks/'
+    'tasks_api': 'http://95.93.243.135:8000/api/tasks/'
 };
 
 //Helper functions
@@ -32,12 +32,22 @@ function del_remote(url, callback) {
 }
 
 function display_remote_errors(error) {
-    $('#errors').toggleClass('hidden').focus();
-    var errors = JSON.parse(error.responseText);
+    $('#errors').removeClass('hidden');
+    try {
+        var errors  = JSON.parse(error.responseText);
 
-    Object.keys(errors).forEach(function (label) {
-        $('#errors').append('<p class="text-left">'+errors[label]+'</p>');
-    });
+        Object.keys(errors).forEach(function (label) {
+            $('#errors').append('<p>'+errors[label]+'</p>');
+        });
+    } catch(err) {
+        $('#errors').append('<p> network error, server may be down</p>');
+    }
+
+    setTimeout(hide_errors, 3500);
+
+    function hide_errors() {
+        $('#errors').empty().addClass('hidden');
+    }
 }
 
 //Init
@@ -55,11 +65,6 @@ $(function(){
             }
         }
     });
-
-    // Disable errors container
-    $('#errors').focusout(function () {
-        $('#errors').empty().toggleClass('hidden');
-    });
 });
 
 //Tasks
@@ -68,7 +73,7 @@ $(function() {
         init();
     });
 
-    $('#form-input-new-task').submit(function (e) {
+    $('#form-input-new-task').submit(function(e) {
         e.preventDefault();
         submit_form($(this).prop('id'), Server.tasks_api, init);
     });

@@ -2,31 +2,31 @@
 
 {% block content %}
     <div class="tab-content">
-        <div id="errors" class="hidden center error-note" tabindex="0">
+        <div id="errors" class="hidden center error-note">
         </div>
         <div class="tab-pane" role="tabpanel" id="tab-content-tasks">
-            <div class="modal fade" role="dialog" tabindex="-1" id="model-task-options">
+            <div role="dialog" tabindex="-1" class="modal fade" id="model-task-options">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header" id="modal-tasks-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">×</span></button>
-                            <div class="row bottom-gap">
+                            <div class="row">
                                 <div class="col-md-11">
                                     <h4 id="modal-task-name" class="no-margin">Task Name</h4></div>
                                 <div class="col-md-12 group no-padding">
                                     <form method="post" class="group no-margin">
                                         <div class="row no-margin">
-                                            <div class="col-md-6 col-sm-6 col-xs-12 inline group">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 inline bottom-gap">
                                                 <label for="modal-input-task-pomodoros">Completed Intervals </label>
-                                                <input class="form-control input-number" type="number"
-                                                       name="pomodoro-intervals" value="2" disabled="" min="0"
-                                                       id="modal-input-task-pomodoros">
+                                                <input type="number" name="pomodoro-intervals" value="2" disabled
+                                                       min="0" class="form-control input-number"
+                                                       id="modal-input-task-pomodoros"/>
                                                 <a href="#" id="btn-modal-edit-task"> <i class="material-icons">edit</i></a>
                                             </div>
-                                            <div class="col-md-6 col-md-pull-2 col-sm-6 col-sm-pull-2 col-xs-12"
+                                            <div class="col-md-6 col-md-pull-2 col-sm-6 col-sm-pull-2 col-xs-12 hidden"
                                                  id="col-modal-task-btns">
-                                                <div class="btn-group btn-group-sm group" role="group">
+                                                <div role="group" class="btn-group btn-group-sm">
                                                     <button class="btn btn-default btn-sm" type="button"
                                                             id="btn-modal-task-cancel">Cancel
                                                     </button>
@@ -51,7 +51,7 @@
                                 <div class="col-md-7 col-sm-6 col-xs-6"><span>dd/MM/yyyy HH:mm</span></div>
                                 <div class="col-md-5 col-sm-6 col-xs-6 text-right group"><span>25 min</span></div>
                                 <div class="col-md-12">
-                                    <hr>
+                                    <hr/>
                                 </div>
                             </div>
                         </div>
@@ -71,12 +71,12 @@
                         </div>
                         <form method="post" id="form-input-new-task" class="hidden center bottom-gap">
                             <div class="row">
-                                <div class="col-sm-8 col-xs-6 no-padding group">
+                                <div class="col-sm-8 col-xs-6 no-padding">
                                     <input id="input-new-task" class="form-control" type="text" name="name" required=""
                                            placeholder="Task Name">
                                 </div>
                                 <div class="col-sm-4 col-xs-6 text-right no-padding">
-                                    <div class="btn-group inline group" role="group">
+                                    <div class="btn-group inline" role="group">
                                         <button class="btn btn-default btn-sm" type="button" id="btn-cancel-input-task">
                                             Cancel
                                         </button>
@@ -88,10 +88,11 @@
                         <div id="tasks-content">
                         </div>
                     </div>
-                    <div class="tab-pane center" role="tabpanel" id="tab-done">
-                        <div class="row center bottom-gap">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
-                                <h6>dd/MM/yyyy </h6></div>
+                    <div role="tabpanel" class="tab-pane center" id="tab-done">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p class="info">21/04/2017 </p>
+                            </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-body">
@@ -127,9 +128,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row center bottom-gap">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
-                                <h6>dd/MM/yyyy </h6></div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p class="info">17/04/2017 </p>
+                            </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-body">
@@ -217,13 +219,13 @@
                             </div>
                         </div>
                         <form method="post" id="form-settings" class="center top-gap">
-                            <div class="row hidden bottom-gap" id="row-settings-form-actions">
-                                <div class="col-md-6 col-sm-6 col-xs-7 group">
-                                    <input class="form-control" type="text" required="" placeholder="Setting name"
-                                           id="input-setting-name">
+                            <div class="hidden row bottom-gap" id="row-settings-form-actions">
+                                <div class="col-sm-8 col-xs-6 no-padding">
+                                    <input type="text" required placeholder="Setting name" class="form-control"
+                                           id="input-setting-name"/>
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-5 text-right no-padding">
-                                    <div class="btn-group inline group" role="group">
+                                <div class="col-sm-4 col-xs-6 text-right no-padding">
+                                    <div role="group" class="btn-group inline">
                                         <button class="btn btn-default btn-sm" type="button"
                                                 id="btn-cancel-input-setting">Cancel
                                         </button>
@@ -232,81 +234,83 @@
                                 </div>
                             </div>
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <label for="setting-duration">Pomodoro duration </label>
-                                </div>
                                 <div class="panel-body no-padding">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-xs-offset-3">
-                                            <input class="form-control input-number" type="number"
-                                                   name="pomodoro_duration" value="25" disabled="" required="" min="1"
-                                                   id="setting-duration">
+                                    <div class="row center">
+                                        <div class="col-md-8 col-sm-8 col-xs-12 text-left col-task-detail">
+                                            <label for="setting-duration">Pomodoro duration (min)</label>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h6>minutes </h6></div>
+                                        <div class="col-md-4 col-md-pull-0 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3">
+                                            <div class="input-container">
+                                                <input class="form-control input-number" type="number"
+                                                       name="pomodoro_duration" value="25" disabled="" required=""
+                                                       min="1" id="setting-duration">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <label for="setting-break-duration">Break </label>
-                                </div>
                                 <div class="panel-body no-padding">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-xs-offset-3">
-                                            <input class="form-control input-number" type="number" name="short_break"
-                                                   value="5" disabled="" required="" min="1"
-                                                   id="setting-break-duration">
+                                    <div class="row center">
+                                        <div class="col-md-8 col-sm-8 text-left col-task-detail">
+                                            <label for="setting-break-duration">Break (min) </label>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h6>minutes </h6></div>
+                                        <div class="col-md-4 col-md-pull-0 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3">
+                                            <div class="input-container">
+                                                <input class="form-control input-number" type="number"
+                                                       name="short_break" value="5" disabled="" required="" min="1"
+                                                       id="setting-break-duration">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <label for="setting-long-break-duration">Long Break </label>
-                                </div>
                                 <div class="panel-body no-padding">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-xs-offset-3">
-                                            <input class="form-control input-number" type="number" name="long_break"
-                                                   value="30" disabled="" required="" min="1"
-                                                   id="setting-long-break-duration">
+                                    <div class="row center">
+                                        <div class="col-md-8 col-sm-8 text-left col-task-detail">
+                                            <label for="setting-long-break-duration">Long Break (min) </label>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h6>minutes </h6></div>
+                                        <div class="col-md-4 col-md-pull-0 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3">
+                                            <div class="input-container">
+                                                <input class="form-control input-number" type="number" name="long_break"
+                                                       value="30" disabled="" required="" min="1"
+                                                       id="setting-long-break-duration">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <label for="setting-pomodoros-to-long-break">Long Break After </label>
-                                </div>
                                 <div class="panel-body no-padding">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-xs-offset-3">
-                                            <input class="form-control input-number" type="number"
-                                                   name="long_break_after" value="4" disabled="" required="" min="1"
-                                                   id="setting-pomodoros-to-long-break">
+                                    <div class="row center">
+                                        <div class="col-md-8 col-sm-8 text-left col-task-detail">
+                                            <label for="setting-pomodoros-to-long-break">Long Break After
+                                                (pomodoros) </label>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h6>pomodoros </h6></div>
+                                        <div class="col-md-4 col-md-pull-0 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3">
+                                            <div class="input-container">
+                                                <input class="form-control input-number" type="number"
+                                                       name="long_break_after" value="4" disabled="" required="" min="1"
+                                                       id="setting-pomodoros-to-long-break">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <label for="setting-daily-target">Daily Target </label>
-                                </div>
                                 <div class="panel-body no-padding">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-xs-offset-3">
-                                            <input class="form-control input-number" type="number" name="daily_target"
-                                                   value="14" disabled="" required="" min="1" id="setting-daily-target">
+                                    <div class="row center">
+                                        <div class="col-md-8 col-sm-8 text-left col-task-detail">
+                                            <label for="setting-daily-target">Daily Target (pomodoros) </label>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h6>pomodoros </h6></div>
+                                        <div class="col-md-4 col-md-pull-0 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3">
+                                            <div class="input-container">
+                                                <input class="form-control input-number" type="number"
+                                                       name="daily_target" value="25" disabled="" required="" min="1"
+                                                       id="setting-daily-target">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -317,28 +321,22 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-2 col-sm-2 col-xs-3"><i class="material-icons">person</i></div>
-                                    <div class="col-md-10 col-sm-10 col-xs-9 text-left no-padding">
-                                        <span>{{ user.username }}</span>
+                                    <div class="col-md-10 col-sm-10 col-xs-9 text-left no-padding"><span>fred </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {% if user.email %}
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-2 col-sm-2 col-xs-3"><i class="material-icons">email</i></div>
-                                        <div class="col-md-10 col-sm-10 col-xs-9 text-left no-padding">
-                                            <span>{{ user.email }}</span>
-                                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-3"><i class="material-icons">email</i></div>
+                                    <div class="col-md-10 col-sm-10 col-xs-9 text-left no-padding"><span>fred@nowhere.com </span>
                                     </div>
                                 </div>
                             </div>
-                        {% endif %}
+                        </div>
                         <div class="row top-gap">
-                            <div class="col-md-12">
-                                <a class="text-primary" href="{% url 'logout' %}">Logout</a>
-                            </div>
+                            <div class="col-md-12"><a class="text-primary" href="{% url 'logout' %}">Logout</a></div>
                         </div>
                     </div>
                 </div>

@@ -51,7 +51,7 @@ label {
     margin: 0 auto;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 650px) {
     .center {
         width: initial;
     }
@@ -70,11 +70,7 @@ label {
 }
 
 .info {
-    background-color: #bbbbbb;
-}
-
-.info * {
-    color: white;
+    font-weight: 600;
 }
 
 .action-button {
@@ -82,7 +78,10 @@ label {
 }
 
 .input-number {
-    width: 50px !important;
+    text-align: center;
+}
+
+.input-container {
     margin-bottom: 8px;
     text-align: center;
 }
@@ -177,14 +176,6 @@ label {
     }
 }
 
-/* Tab Settings */
-
-@media (min-width: 767px) {
-    #form-settings.center {
-        width: 300px;
-    }
-}
-
-#form-settings .panel label {
-    padding: 0;
+#modal-input-task-pomodoros {
+  width:50px;
 }
